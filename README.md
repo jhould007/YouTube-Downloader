@@ -2,7 +2,7 @@
 A simple python GUI program I wrote using the pytube and tkinter libraries to download YouTube playlists, since I was sick of trying various janky websites that never seemed to work properly.
 
 # How to Use
-1) Run the .exe file, located under dist/gui.exe. 
+1) Run the .exe file, located under dist/gui.exe. Windows will try to prevent you from running the file since it's an unknown executable, but ignore this and continue. It's safe, I promise!
 2) In the window that appears, paste your YouTube playlist URL.
 3) Select either audio or video, depending on which you want.
 4) Click the "download" button. 
