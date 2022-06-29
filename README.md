@@ -9,3 +9,7 @@ A simple python GUI program I wrote using the pytube and tkinter libraries to do
 5) Click the "download" button. 
 6) Find your downloaded video/audio in a folder created in your Downloads folder. 
 7) Enjoy!
+
+# Disclaimer
+
+<span style="color:red;font-size:24px"> By using this tool, you agree to abide by all laws regarding copyrighted material.</span>
