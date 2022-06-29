@@ -1,2 +1,0 @@
-Tutorial: https://www.pythontutorial.net/tkinter/
-Changing the TItle: https://pythonguides.com/python-tkinter-title/
