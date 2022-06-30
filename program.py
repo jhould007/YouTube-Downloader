@@ -9,7 +9,7 @@ import download
 # Create the window
 root = tk.Tk()
 root.title("YouTube Playlist Downloader")
-root.geometry("800x500")
+root.geometry("850x500")
 
 # Set font style
 normalFont = tk.font.nametofont("TkDefaultFont")
@@ -17,14 +17,15 @@ normalFont.config(size=14)
 
 # Welcome messages
 welcome = tk.Label(root, text="Welcome to the YouTube playlist downloader!", foreground="#dd5454").pack()
-message1 = tk.Label(root, text="Download your YouTube playlist by entering the playlist URL in the text box below.").pack(pady=10)
+instructions = tk.Label(root, text="Download your YouTube playlist by entering the playlist URL in the text box below.").pack(pady=10)
+warning = tk.Label(root, text="WARNING: There is currently no way to pause or cancel the download of a playlist. \n Please make sure you really want to download the playlist (and are willing to wait) before starting! \n I am working on a fix for this.").pack(pady=10)
 
 # Input box to enter the playlist URL
 playlistURLbox = ttk.Entry(root, width=80)
 playlistURLbox.pack()
 
 # Radio button allowing the user to specify audio or video
-message2 = tk.Label(root, text="Do you want to download the playlist as video or audio? (Both are MP4 format)").pack(pady=10)
+videoOrAudio = tk.Label(root, text="Do you want to download the playlist as video or audio? (Both are MP4 format)").pack(pady=10)
 selected = tk.StringVar()
 video = ttk.Radiobutton(root, text='Video', value="Video", variable=selected).pack()
 audio = ttk.Radiobutton(root, text='Audio', value="Audio", variable=selected).pack()
