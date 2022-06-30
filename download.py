@@ -20,6 +20,7 @@ def downloadPlaylist(url):
 # Downloads a playlist as mp4 audio
 def downloadPlaylistAudio(url):
     playlist = Playlist(url)
+    print("There are " + str(len(playlist.video_urls)) + " videos in this playlist.")
     folderName = helper.cleanString(playlist.title)
     helper.deleteFolder(folderName)
     path = helper.createFolder(folderName)

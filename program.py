@@ -1,6 +1,8 @@
 # File containing the main program flow
+import time
 import tkinter as tk
 from tkinter import ttk
+import tkinter.font as tkFont
 from threading import Thread
 import download
 
