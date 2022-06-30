@@ -2,13 +2,23 @@
 import os
 from pathlib import Path
 import re
+import shutil
 
-#Creates a directory in downloads
+# Creates a directory in Downloads
 def createFolder(name): 
     downloadPath = str(os.path.join(Path.home(), "Downloads"))
     path = os.path.join(downloadPath, name)
     os.mkdir(path)
     return str(path)
+
+# Delete a non-empty directory from Downloads
+def deleteFolder(folderName):
+    downloadPath = downloadPath = str(os.path.join(Path.home(), "Downloads"))
+    folderPath = downloadPath + "/" + folderName
+    if os.path.isdir(folderPath): 
+        shutil.rmtree(folderPath)
+
+deleteFolder("hello")
 
 # Processes a string into a format that can be used as a folder name
 # Removes emojis and illegal characters
@@ -48,13 +58,3 @@ def cleanString(data):
     result = result.replace("   ", " ")
 #    print("New string: " + result)
     return result
-
-#< (less than)
-#  > (greater than)
-#  : (colon - sometimes works, but is actually NTFS Alternate Data Streams)
-#  " (double quote)
-#  / (forward slash)
-#  \ (backslash)
- # | (vertical bar or pipe)
- # ? (question mark)
- # * (asterisk)

@@ -1,23 +1,17 @@
+# File containing the main program flow
 import tkinter as tk
 from tkinter import ttk
-import tkinter.font as tkFont
-from tkinter import messagebox as mb
-from urllib.parse import urlparse
-from pytube import YouTube
-from pytube import Playlist
-import download, helper
+from threading import Thread
+import download
 
 # Create the window
 root = tk.Tk()
 root.title("YouTube Playlist Downloader")
-root.geometry("800x400")
+root.geometry("800x500")
 
 # Set font style
 normalFont = tk.font.nametofont("TkDefaultFont")
 normalFont.config(size=14)
-
-# Disclaimer message
-#mb.showwarning(title="Notice", message="By using this tool, you agree to abide by all laws regarding copyrighted material.")
 
 # Welcome messages
 welcome = tk.Label(root, text="Welcome to the YouTube playlist downloader!", foreground="#dd5454").pack()
@@ -32,22 +26,26 @@ message2 = tk.Label(root, text="Do you want to download the playlist as video or
 selected = tk.StringVar()
 video = ttk.Radiobutton(root, text='Video', value="Video", variable=selected).pack()
 audio = ttk.Radiobutton(root, text='Audio', value="Audio", variable=selected).pack()
+
+def startThread(): 
+    t.start()
   
 # Gets input from the text boxes and starts the download  
 def processInput(): 
-    pb = ttk.Progressbar(root, orient="horizontal", mode="indeterminate", length=80).pack()
     url = playlistURLbox.get()
     if selected.get() == "Video": 
         download.downloadPlaylist(url)
     elif selected.get() == "Audio":
         download.downloadPlaylistAudio(url)
     downloadMessage = tk.Label(root, text="Download finished!").pack(pady=30)
+    
+# Create a button to submit
+submit = ttk.Button(root, text="⬇ Download", command=startThread).pack(pady=30)
 
-#Create a button to submit
-submit = ttk.Button(root, text="⬇ Download", command=processInput).pack(pady=30)
+t = Thread(target=processInput)
 
-#Disclaimer
-disclaimer = tk.Label(root, text="⚠️ By using this tool, you agree to abide by all laws regarding copyrighted material.", justify="center", bg="red", fg="white").pack()
+# Disclaimer
+disclaimer = tk.Label(root, text="⚠️ By using this tool, you agree to abide by all laws regarding copyrighted material.", justify="center", bg="red", fg="white").pack(pady=30)
 
 root.mainloop()
     
