@@ -4,6 +4,9 @@ from pytube import Playlist
 import os
 from pathlib import Path
 import helper
+import tkinter as tk
+from tkinter import ttk
+import tkinter.font as tkFont
 
 downloadPath = str(os.path.join(Path.home(), "Downloads"))
 
@@ -20,7 +23,6 @@ def downloadPlaylist(url):
 # Downloads a playlist as mp4 audio
 def downloadPlaylistAudio(url):
     playlist = Playlist(url)
-    print("There are " + str(len(playlist.video_urls)) + " videos in this playlist.")
     folderName = helper.cleanString(playlist.title)
     helper.deleteFolder(folderName)
     path = helper.createFolder(folderName)
