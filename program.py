@@ -8,7 +8,7 @@ import download
 # Create the window
 root = tk.Tk()
 root.title("YouTube Playlist Downloader")
-root.geometry("850x580")
+root.geometry("850x600")
 
 # Set font style
 normalFont = tk.font.nametofont("TkDefaultFont")
@@ -30,32 +30,20 @@ video = ttk.Radiobutton(root, text='Video', value="Video", variable=selected).pa
 audio = ttk.Radiobutton(root, text='Audio', value="Audio", variable=selected).pack()
 
 def startThreads(): 
-    downloadThread.start()   
-    pbThread.start()
-    
-def startProgressBar():
-    pb.start()
+    downloadThread.start()       
 
 # Gets input from the text boxes and starts the download  
 def downloadFunc():  
     url = playlistURLbox.get()
     if selected.get() == "Video": 
-        startProgressBar()
-        download.downloadPlaylist(url)
+        download.downloadPlaylist(url, root)
     elif selected.get() == "Audio":
-        startProgressBar()
-        download.downloadPlaylistAudio(url)
-    pb.destroy()
-    downloadMessage = tk.Label(root, text="Download finished!").pack(pady=30)
-    
-pb = ttk.Progressbar(root, orient="horizontal", mode="indeterminate", length=450)
-pb.pack(pady=20)
+        download.downloadPlaylistAudio(url, root)
+    downloadMessage = tk.Label(root, text="✔️ Download finished!").pack()
     
 # Create a button to submit
 submit = ttk.Button(root, text="⬇ Download", command=startThreads).pack(pady=30)
-
 downloadThread = Thread(target=downloadFunc)
-pbThread = Thread(target=startProgressBar)
 
 # Disclaimer
 disclaimer = tk.Label(root, text="⚠️ By using this tool, you agree to abide by all laws regarding copyrighted material.", justify="center", bg="red", fg="white").pack(pady=30)
