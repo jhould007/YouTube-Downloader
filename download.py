@@ -13,29 +13,46 @@ downloadPath = str(os.path.join(Path.home(), "Downloads"))
 # Downloads a playlist as mp4 video
 def downloadPlaylist(url):
     playlist = Playlist(url)
-    folderName = helper.cleanString(playlist.title)
-    helper.deleteFolder(folderName)
-    path = helper.createFolder(folderName)
-    for url in playlist.video_urls:
-        video = YouTube(url)
-        video.streams.get_highest_resolution().download(path)
-
-# Downloads a playlist as mp4 audio
-def downloadPlaylistAudio(url):
-    playlist = Playlist(url)
+    videoCount = len(playlist.video_urls)
+    videoIndex = 1
     folderName = helper.cleanString(playlist.title)
     helper.deleteFolder(folderName)
     path = helper.createFolder(folderName)
     for url in playlist.video_urls:
         video = YouTube(url)
         video.title = helper.cleanString(video.title)
-        video.streams.get_audio_only().download(path)
+        video.streams.get_highest_resolution().download(path) #I think this line might be causing the issue
+        print("Downloaded video " + str(videoIndex) + " out of " + str(videoCount) + ". Title of video: " + video.title)
+        videoIndex += 1
+    print("Download complete!")
+
+# Downloads a playlist as mp4 audio
+def downloadPlaylistAudio(url):
+    playlist = Playlist(url)
+    videoCount = len(playlist.video_urls)
+    videoIndex = 1
+    folderName = helper.cleanString(playlist.title)
+    helper.deleteFolder(folderName)
+    path = helper.createFolder(folderName)
+    for url in playlist.video_urls:
+        video = YouTube(url)
+        video.title = helper.cleanString(video.title)
+        video.streams.get_audio_only().download(path) 
+        print("Downloaded audio " + str(videoIndex) + " out of " + str(videoCount) + ". Title of video: " + video.title)
+        videoIndex += 1
+    print("Download complete!")
 
 # Returns the number of videos in a playlist
 def countVideos(url): 
     playlist = Playlist(url)
     videoCount = 0
     for url in playlist.video_urls: 
+        print("Video " + str(videoCount + 1) + ": " + url)
         videoCount += 1
     print("There are " + str(videoCount) + " videos in this playlist.")
     return videoCount
+
+# countVideos("https://www.youtube.com/watch?v=-3v4OsPmsUg&list=PL845lQkWyS9JQRYTfFzhQSh1LbV75t20T")
+
+# How It's Actually Made: https://www.youtube.com/watch?v=-3v4OsPmsUg&list=PL845lQkWyS9JQRYTfFzhQSh1LbV75t20T
+
