@@ -29,8 +29,11 @@ def downloadAudio(url, root):
     downloadedText = StringVar()
     downloadedText.set("")
     downloadedLabel = ttk.Label(root, textvariable=downloadedText).pack(pady=10)
-    video.streams.get_audio_only().download(downloadPath)
-    downloadedText.set("Downloaded video. Title of video: \"" + video.title + "\"")
+    downloadedFile = video.streams.get_audio_only().download(downloadPath)
+    base, ext = os.path.splitext(downloadedFile)
+    newFile = base + ".mp3"
+    os.rename(downloadedFile, newFile)
+    downloadedText.set("Downloaded audio. Title of video: \"" + video.title + "\"")
     print("Download complete!")
 
 # Downloads a playlist as mp4 video
@@ -42,7 +45,7 @@ def downloadPlaylist(url, root):
     helper.deleteFolder(folderName)
     path = helper.createFolder(folderName)
     downloadedText = StringVar()
-    downloadedText.set("")
+    downloadedText.set("") 
     downloadedLabel = ttk.Label(root, textvariable=downloadedText).pack(pady=10)
     for url in playlist.video_urls:
         video = YouTube(url)
@@ -68,12 +71,20 @@ def downloadPlaylistAudio(url, root):
     for url in playlist.video_urls:
         video = YouTube(url)
         video.title = helper.cleanString(video.title)
-        video.streams.get_audio_only().download(path) 
+        downloadedFile = video.streams.get_audio_only().download(path) 
+        base, ext = os.path.splitext(downloadedFile)
+        newFile = base + ".mp3"
+        os.rename(downloadedFile, newFile)
         downloadedText.set("Downloaded audio " + str(videoIndex) + " out of " + str(videoCount) + ". Title of video: \"" + video.title + "\"")
         print("Downloaded audio " + str(videoIndex) + " out of " + str(videoCount) + ". Title of video: " + video.title)
         videoIndex += 1
     sleep(1)
     print("Download finished!")
+    
+   # downloadedFile = video.streams.get_audio_only().download(downloadPath)
+   # base, ext = os.path.splitext(downloadedFile)
+   # newFile = base + ".mp3"
+   # os.rename(downloadedFile, newFile)
 
 # Returns the number of videos in a playlist
 def countVideos(url): 
