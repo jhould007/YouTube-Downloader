@@ -8,7 +8,7 @@ import download
 # Create the window
 root = tk.Tk()
 root.title("YouTube Downloader")
-root.geometry("850x600")
+root.geometry("950x700")
 
 # Set font style
 normalFont = tk.font.nametofont("TkDefaultFont")
@@ -16,7 +16,7 @@ normalFont.config(size=14)
 
 # Welcome messages
 welcome = tk.Label(root, text="Welcome to the YouTube downloader!", foreground="#dd5454").pack()
-instructions = tk.Label(root, text="Download your YouTube playlist by entering the playlist URL in the text box below.").pack(pady=10)
+instructions = tk.Label(root, text="Download your YouTube video or playlist by entering the URL in the text box below.").pack(pady=10)
 warning = tk.Label(root, text="WARNING: There is currently no way to pause or cancel a download once started. \n Please make sure you really want to download the video or playlist (and are willing to wait) before starting! \n I am working on a fix for this.\n Also, you cannot download multiple things sequentially. \n After one download, please close the program and reopen it.").pack(pady=10)
 
 # Input box to enter the playlist URL

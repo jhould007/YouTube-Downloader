@@ -22,7 +22,7 @@ def downloadVideo(url, root):
     downloadedText.set("Downloaded video. Title of video: \"" + video.title + "\"")
     print("Download complete!")
 
-#Downloads a video as mp4 audio
+#Downloads a video as mp3 audio
 def downloadAudio(url, root):
     video = YouTube(url)
     video.title = helper.cleanString(video.title)
@@ -51,13 +51,13 @@ def downloadPlaylist(url, root):
         video = YouTube(url)
         video.title = helper.cleanString(video.title)
         video.streams.get_highest_resolution().download(path) #I think this line might be causing the issue
-        downloadedText.set("Downloaded audio " + str(videoIndex) + " out of " + str(videoCount) + ". Title of video: \"" + video.title + "\"")
+        downloadedText.set("Downloaded video " + str(videoIndex) + " out of " + str(videoCount) + ". Title of video: \"" + video.title + "\"")
         print("Downloaded video " + str(videoIndex) + " out of " + str(videoCount) + ". Title of video: " + video.title)
         videoIndex += 1
     sleep(1)
     print("Download complete!")
 
-# Downloads a playlist as mp4 audio
+# Downloads a playlist as mp3 audio
 def downloadPlaylistAudio(url, root):
     playlist = Playlist(url)
     videoCount = len(playlist.video_urls)
