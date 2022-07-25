@@ -11,6 +11,28 @@ import tkinter.font as tkFont
 
 downloadPath = str(os.path.join(Path.home(), "Downloads"))
 
+#Downloads a video as mp4 video
+def downloadVideo(url, root):
+    video = YouTube(url)
+    video.title = helper.cleanString(video.title)
+    downloadedText = StringVar()
+    downloadedText.set("")
+    downloadedLabel = ttk.Label(root, textvariable=downloadedText).pack(pady=10)
+    video.streams.get_highest_resolution().download(downloadPath)
+    downloadedText.set("Downloaded video. Title of video: \"" + video.title + "\"")
+    print("Download complete!")
+
+#Downloads a video as mp4 audio
+def downloadAudio(url, root):
+    video = YouTube(url)
+    video.title = helper.cleanString(video.title)
+    downloadedText = StringVar()
+    downloadedText.set("")
+    downloadedLabel = ttk.Label(root, textvariable=downloadedText).pack(pady=10)
+    video.streams.get_audio_only().download(downloadPath)
+    downloadedText.set("Downloaded video. Title of video: \"" + video.title + "\"")
+    print("Download complete!")
+
 # Downloads a playlist as mp4 video
 def downloadPlaylist(url, root):
     playlist = Playlist(url)
