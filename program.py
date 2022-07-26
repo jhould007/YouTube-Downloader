@@ -24,10 +24,10 @@ URLbox = ttk.Entry(root, width=80)
 URLbox.pack()
 
 # Radio button allowing the user to specify audio or video
-videoOrAudio = tk.Label(root, text="Do you want to download the video or playlist as video or audio? (Both are MP4 format)").pack(pady=10)
+videoOrAudio = tk.Label(root, text="Do you want to download the video or playlist as video or audio?").pack(pady=10)
 selected = tk.StringVar()
-video = ttk.Radiobutton(root, text='Video', value="Video", variable=selected).pack()
-audio = ttk.Radiobutton(root, text='Audio', value="Audio", variable=selected).pack()
+video = ttk.Radiobutton(root, text='Video (mp4)', value="Video", variable=selected).pack()
+audio = ttk.Radiobutton(root, text='Audio (mp3)', value="Audio", variable=selected).pack()
 
 def startThreads(): 
     downloadThread.start()       

@@ -20,6 +20,7 @@ def downloadVideo(url, root):
     downloadedLabel = ttk.Label(root, textvariable=downloadedText).pack(pady=10)
     video.streams.get_highest_resolution().download(downloadPath)
     downloadedText.set("Downloaded video. Title of video: \"" + video.title + "\"")
+    sleep(1)
     print("Download complete!")
 
 #Downloads a video as mp3 audio
@@ -34,6 +35,7 @@ def downloadAudio(url, root):
     newFile = base + ".mp3"
     os.rename(downloadedFile, newFile)
     downloadedText.set("Downloaded audio. Title of video: \"" + video.title + "\"")
+    sleep(1)
     print("Download complete!")
 
 # Downloads a playlist as mp4 video
