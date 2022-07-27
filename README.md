@@ -1,5 +1,7 @@
-# YouTube-Playlist-Downloader
+# YouTube-Downloader
 A simple python GUI program I wrote using the pytube and tkinter libraries to download YouTube videos or playlists, since I was sick of trying various janky websites that never seemed to work properly.
+
+<span style="style:bold;font-size:24px">Check out the demo video <a href="https://www.youtube.com/watch?v=FSfGhRYhekw">here</a>!</span>
 
 # How to Use
 1) Clone the repository. 
@@ -13,7 +15,11 @@ A simple python GUI program I wrote using the pytube and tkinter libraries to do
 7) Enjoy!
 
 # New Features I'm Looking Into
-* Downloading audio as mp3 rather than mp4, as mp3 is a more common format for audio.
+* Checking if URLs are valid
+* Improving visual design (font size, colors, emojis)
+* Stop and pause buttons
+* Song numbering when downloading playlists as audio
+
 
 # Disclaimer
 
